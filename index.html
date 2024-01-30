@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Manu</title>
+<style>
+    #container {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        border: 1px solid black;
+    }
+
+    h1 {
+        position: relative;
+        text-align: center;
+    }
+
+    span {
+        color: red;
+    }
+
+    #s {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        background-color: green;
+        color: white;
+        font-size: 20px;
+    }
+
+    #n {
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        background-color: red;
+        color: white;
+        font-size: 20px;
+    }
+
+    #mensagem {
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        text-align: center;
+        font-size: 30px;
+        color: rgb(14, 152, 194);
+    }
+
+    #imagem {
+        width: auto;
+        height: 448px;
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+    }
+</style>
+</head>
+<body>
+    <div id="container">
+        <h1>Você me <span>AMA?</span></h1>
+        <button id="s">Sim</button>
+        <button id="n">Não</button>
+    </div>
+
+<script>
+    window.onload = function() {
+    var s = document.getElementById("s");
+    var n = document.getElementById("n");
+    var container = document.getElementById("container");
+    var contador = 0;
+
+    s.addEventListener("click", function() {
+        var mensagem = document.createElement("h1");
+        mensagem.id = "mensagem";
+        mensagem.innerHTML = "EU TAMBÉM TE AMO!❤";
+
+        var imagem = document.createElement("img");
+        imagem.id = "imagem";
+        imagem.src = "./assets/imagem1.jpg";
+        container.innerHTML = "";
+
+        container.appendChild(mensagem);
+        container.appendChild(imagem);
+    });
+
+    n.addEventListener("click", function() {
+        contador++;
+        if (contador == 15) {
+            var mensagem = document.createElement("h1");
+            mensagem.id = "mensagem";
+            mensagem.innerHTML = "Mas vai amar...😑";
+            var imagem = document.createElement("img");
+            imagem.id = "imagem";
+            imagem.src = "./assets/imagem2.jpg";
+
+            container.innerHTML = "";
+            container.appendChild(mensagem);
+            container.appendChild(imagem);
+        }
+        var x = Math.floor(Math.random() * (container.offsetWidth - n.offsetWidth));
+        var y = Math.floor(Math.random() * (container.offsetHeight - n.offsetHeight));
+        n.style.left = x + "px";
+        n.style.top = y + "px";
+    });
+};
+</script>
+</body>
+</html>
